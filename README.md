@@ -1,4 +1,4 @@
-# ML_fraud_Citibank
+# Citibank Citi Gold Card — Credit Default Prediction with Machine Learning
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-orange?style=flat-square&logo=scikit-learn)
