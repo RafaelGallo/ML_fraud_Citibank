@@ -226,30 +226,72 @@ SMOTE generated **7,453 synthetic samples** of the minority class (Default = 1),
 
 ## Machine Learning Models
 
-Nine classification models were trained and evaluated using the SMOTE-balanced training set and evaluated on the original test set.
+### Model Ranking
 
-| Model | Type | Library |
+| # | Model | Accuracy | Precision | Recall | F1-Score | AUC |
+|---|---|---|---|---|---|---|
+| 1 | **GB Optimized + Calibrated** | **0.8009** | **0.5783** | 0.4085 | 0.4788 | **0.7224** |
+| 2 | GB Baseline | 0.7778 | 0.5034 | 0.5295 | 0.5161 | 0.7195 |
+| 3 | Gradient Boosting | 0.7336 | 0.4245 | 0.5346 | 0.4732 | 0.7119 |
+| 4 | CatBoost | 0.7322 | 0.4199 | 0.5150 | 0.4626 | 0.7012 |
+| 5 | LightGBM | 0.7312 | 0.4213 | 0.5367 | 0.4720 | 0.7060 |
+| 6 | XGBoost | 0.7280 | 0.4152 | 0.5264 | 0.4642 | 0.6907 |
+| 7 | AdaBoost | 0.7245 | 0.4160 | **0.5708** | **0.4813** | 0.7135 |
+| 8 | KNN | 0.7164 | 0.3884 | 0.4643 | 0.4230 | 0.6484 |
+| 9 | Random Forest | 0.6956 | 0.3700 | 0.5119 | 0.4295 | 0.6798 |
+| 10 | Decision Tree | 0.6810 | 0.3490 | 0.4912 | 0.4081 | 0.6201 |
+| 11 | Naive Bayes | 0.5160 | 0.2750 | 0.7104 | 0.3965 | 0.6571 |
+
+### Champion Model — Baseline vs Optimized + Calibrated
+
+| Metric | Baseline | Optimized | Change |
+|---|---|---|---|
+| **Accuracy** | 0.7778 | **0.8009** | +2.31pp |
+| **Precision (Default)** | 0.50 | **0.58** | +8pp |
+| **Recall (Default)** | **0.53** | 0.41 | -12pp |
+| **F1-Score (Default)** | **0.52** | 0.48 | -4pp |
+| **Non-Default Recall** | 0.85 | **0.91** | +6pp |
+| **AUC** | 0.7195 | **0.7224** | +0.0029 |
+| **Gini Coefficient** | 0.4390 | **0.4448** | +0.0058 |
+| **False Positives** | 505 | **288** | -43.0% |
+| **False Negatives** | **455** | 572 | +25.7% |
+| **True Positives** | **512** | 395 | -22.9% |
+| **True Negatives** | 2,848 | **3,065** | +7.6% |
+
+### Classification Report — Champion Model
+
+**Gradient Boosting Baseline**
+
+| Class | Precision | Recall | F1-Score | Support |
+|---|---|---|---|---|
+| Non-Default | 0.86 | 0.85 | 0.86 | 3,353 |
+| Default | 0.50 | 0.53 | 0.52 | 967 |
+| Accuracy | — | — | 0.78 | 4,320 |
+| Macro Avg | 0.68 | 0.69 | 0.69 | 4,320 |
+| Weighted Avg | 0.78 | 0.78 | 0.78 | 4,320 |
+
+**Gradient Boosting Optimized + Calibrated**
+
+| Class | Precision | Recall | F1-Score | Support |
+|---|---|---|---|---|
+| Non-Default | 0.84 | 0.91 | 0.88 | 3,353 |
+| Default | 0.58 | 0.41 | 0.48 | 967 |
+| Accuracy | — | — | **0.80** | 4,320 |
+| Macro Avg | 0.71 | 0.66 | 0.68 | 4,320 |
+| Weighted Avg | 0.78 | 0.80 | 0.79 | 4,320 |
+
+### Business Decision Framework
+
+| Scenario | Recommended Model | Reason |
 |---|---|---|
-| Naive Bayes | Probabilistic | Scikit-Learn |
-| Decision Tree | Tree-based | Scikit-Learn |
-| Random Forest | Ensemble | Scikit-Learn |
-| KNN | Distance-based | Scikit-Learn |
-| AdaBoost | Boosting | Scikit-Learn |
-| Gradient Boosting | Boosting | Scikit-Learn |
-| XGBoost | Boosting | XGBoost |
-| LightGBM | Boosting | LightGBM |
-| CatBoost | Boosting | CatBoost |
-
-### Training Setup
-
-| Item | Detail |
-|---|---|
-| **Train size** | 80% of dataset |
-| **Test size** | 20% of dataset |
-| **Stratify** | Yes — preserves class proportion |
-| **SMOTE** | Applied on training set only |
-| **Random state** | 42 — reproducibility |
-| **Evaluation metric** | Accuracy (Kaggle competition metric) |
+| **Kaggle competition (Accuracy)** | Optimized + Calibrated | 80.09% accuracy |
+| **Minimize false credit denials** | Optimized + Calibrated | Non-Default Recall 91% |
+| **Maximize defaulter detection** | Baseline | Default Recall 53% |
+| **High confidence Default flags** | Optimized + Calibrated | Default Precision 58% |
+| **Balanced Default performance** | Baseline | Default F1 0.52 |
+| **High-risk portfolio screening** | AdaBoost | Highest Recall 57.08% |
+| **Production speed priority** | LightGBM | Best speed/performance ratio |
+| **Conservative credit policy** | CatBoost | Lowest FP rate |
 
 ### Champion Model Optimization
 
