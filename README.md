@@ -224,6 +224,57 @@ SMOTE generated **7,453 synthetic samples** of the minority class (Default = 1),
 | Total | 16,139 | 23,592 |
 | Synthetic samples | — | +7,453 |
 
+## Machine Learning Models
+
+Nine classification models were trained and evaluated using the SMOTE-balanced training set and evaluated on the original test set.
+
+| Model | Type | Library |
+|---|---|---|
+| Naive Bayes | Probabilistic | Scikit-Learn |
+| Decision Tree | Tree-based | Scikit-Learn |
+| Random Forest | Ensemble | Scikit-Learn |
+| KNN | Distance-based | Scikit-Learn |
+| AdaBoost | Boosting | Scikit-Learn |
+| Gradient Boosting | Boosting | Scikit-Learn |
+| XGBoost | Boosting | XGBoost |
+| LightGBM | Boosting | LightGBM |
+| CatBoost | Boosting | CatBoost |
+
+### Training Setup
+
+| Item | Detail |
+|---|---|
+| **Train size** | 80% of dataset |
+| **Test size** | 20% of dataset |
+| **Stratify** | Yes — preserves class proportion |
+| **SMOTE** | Applied on training set only |
+| **Random state** | 42 — reproducibility |
+| **Evaluation metric** | Accuracy (Kaggle competition metric) |
+
+### Champion Model Optimization
+
+The **Gradient Boosting** model was selected as champion and further optimized using the following techniques:
+
+| Technique | Detail |
+|---|---|
+| **Search strategy** | RandomizedSearchCV — 50 iterations |
+| **Cross-validation** | StratifiedKFold — 5 folds |
+| **Calibration** | CalibratedClassifierCV — isotonic method |
+| **Scoring** | Accuracy |
+| **n_jobs** | -1 (all available cores) |
+
+### Hyperparameter Grid
+
+| Hyperparameter | Values Searched |
+|---|---|
+| n_estimators | 100, 200, 300, 500 |
+| learning_rate | 0.01, 0.05, 0.1, 0.2 |
+| max_depth | 3, 4, 5, 6 |
+| min_samples_split | 2, 5, 10 |
+| min_samples_leaf | 1, 2, 4 |
+| subsample | 0.7, 0.8, 0.9, 1.0 |
+| max_features | sqrt, log2, None |
+
 ## Model Evaluation
 
 ### Feature Importance — All Models
@@ -323,8 +374,6 @@ The ranking table consolidates all 11 models by accuracy. Three distinct perform
 | 9 | Random Forest | 0.6956 | 0.3700 | 0.5119 | 0.4295 | 0.6798 |
 | 10 | Decision Tree | 0.6810 | 0.3490 | 0.4912 | 0.4081 | 0.6201 |
 | 11 | Naive Bayes | 0.5160 | 0.2750 | 0.7104 | 0.3965 | 0.6571 |
-
----
 
 ## Final Conclusion
 
