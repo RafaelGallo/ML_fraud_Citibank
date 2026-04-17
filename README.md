@@ -6,8 +6,24 @@
 ![LightGBM](https://img.shields.io/badge/LightGBM-4.0+-green?style=flat-square)
 ![CatBoost](https://img.shields.io/badge/CatBoost-1.2+-yellow?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)
+![Pandas](https://img.shields.io/badge/Pandas-2.0+-150458?style=flat-square&logo=pandas)
+![NumPy](https://img.shields.io/badge/NumPy-1.24+-013243?style=flat-square&logo=numpy)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-3.7+-11557c?style=flat-square)
+![Seaborn](https://img.shields.io/badge/Seaborn-0.12+-4c72b0?style=flat-square)
+![SHAP](https://img.shields.io/badge/SHAP-0.42+-ff6f00?style=flat-square)
+![Imbalanced--Learn](https://img.shields.io/badge/Imbalanced--Learn-0.11+-e74c3c?style=flat-square)
+![Joblib](https://img.shields.io/badge/Joblib-1.3+-2ecc71?style=flat-square)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter)
+![Anaconda](https://img.shields.io/badge/Anaconda-Environment-44A833?style=flat-square&logo=anaconda)
+![Kaggle](https://img.shields.io/badge/Kaggle-Competition-20BEFF?style=flat-square&logo=kaggle)
+![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=flat-square)
+![Accuracy](https://img.shields.io/badge/Accuracy-80.09%25-success?style=flat-square)
+![AUC](https://img.shields.io/badge/AUC-0.7224-blue?style=flat-square)
 
-> Machine Learning pipeline to predict credit card default for Citibank's Citi Gold Card — Kaggle Competition 2018.
+<p align="center">
+  <img src="https://github.com/RafaelGallo/ML_fraud_Citibank/blob/main/img/header.png?raw=true" width="1000"/>
+</p>
 
 ## Business Problem
 
